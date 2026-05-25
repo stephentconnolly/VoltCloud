@@ -1,0 +1,168 @@
+{
+  "name": "voltcloud",
+  "version": "1.0.0",
+  "description": "Modular Audio Environment",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "start-win": "start /B electron .",
+    "start-dev": "electron . --inspect",
+    "build-linux-appimage": "electron-builder --linux AppImage",
+    "build-linux-deb": "electron-builder --linux deb",
+    "build-linux-rpm": "electron-builder --linux rpm",
+    "build-linux-all": "electron-builder --linux AppImage deb rpm tar.gz"
+  },
+  "build": {
+    "appId": "com.nonavideo.voltcloud",
+    "productName": "Volt Cloud",
+    "copyright": "Copyright 2026 Nona Video Production",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "VoltCloud.html",
+      "VoltCloud_Manual.pdf",
+      "assets/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "icon.png",
+      "category": "public.app-category.music",
+      "darkModeSupport": true,
+      "identity": null,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.png",
+      "category": "AudioVideo",
+      "synopsis": "Modular Audio Environment",
+      "description": "A browser-based modular audio synthesis and processing environment with generative sequencers, granular sampling, reverbs, and effects.",
+      "desktop": {
+        "Name": "Volt Cloud",
+        "Comment": "Modular Audio Environment",
+        "Categories": "AudioVideo;Audio;Music;",
+        "Keywords": "audio;synth;modular;granular;reverb;generative;music;",
+        "StartupWMClass": "Volt Cloud"
+      },
+      "executableName": "voltcloud",
+      "maintainer": "Nona Video Production <support@nonavideo.com>",
+      "vendor": "Nona Video Production"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "npmRebuild": false,
+    "extraMetadata": {
+      "main": "main.js"
+    },
+    "deb": {
+      "depends": [
+        "libgtk-3-0",
+        "libnotify4",
+        "libnss3",
+        "libxss1",
+        "libxtst6",
+        "xdg-utils",
+        "libatspi2.0-0",
+        "libuuid1",
+        "libsecret-1-0"
+      ],
+      "priority": "optional"
+    },
+    "rpm": {
+      "depends": [
+        "gtk3",
+        "libnotify",
+        "nss",
+        "libXScrnSaver",
+        "(libXtst or libXtst6)",
+        "xdg-utils",
+        "at-spi2-core",
+        "(libuuid or libuuid1)"
+      ]
+    },
+    "dmg": {
+      "title": "Volt Cloud ${version}",
+      "icon": "icon.png"
+    },
+    "portable": {
+      "artifactName": "VoltCloud-${version}-portable.exe"
+    },
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "@julusian/midi": "^3.0.0"
+  },
+  "author": "Nona Video Production",
+  "homepage": "https://nonavideo.com"
+}
